@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "jest": "^24.8.0"
   },
   "devDependencies": {
