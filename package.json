@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls",
     "jest": "^24.8.0"
   },
   "devDependencies": {
@@ -13,7 +12,8 @@
     "rollup-plugin-terser": "^5.1.1"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "coveralls": "jest --coverage --coverageReporters=text-lcov | coveralls"
   },
   "author": "",
   "license": "ISC"
