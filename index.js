@@ -1,69 +1,56 @@
-//golden ratio
-const goldenRatio = function goldenRatio() {
-
+const round = (num, places) => {
+  return Number(num.toFixed(places))
 }
 
-//round
-const round = function round() {
-  return this % 1 >= .5 ? (this + 1) / 1 : this / 1
+const floor = num => {
+  return Number((num - .5).toFixed())
 }
 
-//floor
-const floor = function floor() {
-
+const ceil = num => {
+  return Number((num + .5).toFixed())
 }
 
-//ceil
-const ceil = function ceil() {
-
+const pad = (num, before = 0, after = 0) => {
+  let list = String(num).split('.')
+  if (list.length === 1) {
+    list.push('0')
+  }
+  list[0] = list[0].length < before ? '0'.repeat((before - list[0].length)) + list[0] : list[0]
+  list[1] = list[1].length < after ? list[1] + '0'.repeat((after - list[1].length)) : list[1]
+  return list.join('.')
 }
 
-//pad
-const pad = function pad() {
-
+const degToRad = (num) => {
+  return round(num * Math.PI / 180, 4)
 }
 
-//degtorad
-const degToRad = function degToRad() {
-
+const radToDeg = (num) => {
+  return round(num * 180 / Math.PI, 1)
 }
 
-//radtodeg
-const radToDeg = function radToDeg() {
-
+const toDollars = (num) => {
+  return "$" + pad(round(num, 2), 1, 2)
 }
 
-//todollars
-const toDollars = function toDollars() {
-
+const tax = (num, rate) => {
+  return pad(round(num * rate, 2), 1, 2)
 }
 
-//tax
-const tax = function tax() {
-
+const taxSum = (num, rate) => {
+  return pad(round(num + Number(tax(num, rate)), 2), 1, 2)
 }
 
-//taxsum
-const taxSum = function taxSum() {
-
+const interest = (total, year, rate) => {
+  var interest = rate / 100 + 1;
+  return toDollars(total * Math.pow(interest, year))
 }
 
-//interest
-const interest = function interest() {
-
+const mortgage = (p, payments, interest) => {
+  return toDollars(p * interest * (Math.pow(1 + interest, payments)) / (Math.pow(1 + interest, payments) - 1))
 }
 
-//mortgage
-const mortgage = function mortgage() {
-
+const intToHex = (int) => {
+  return "#" + int.toString(16)
 }
 
-//inttohex
-const intToHex = function intToHex() {
-
-}
-
-//random
-const randNum = function randNum() {
-
-}
+module.exports = { round, floor, ceil, pad, degToRad, radToDeg, toDollars, tax, taxSum, interest, mortgage, intToHex }
